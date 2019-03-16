@@ -27,14 +27,14 @@ export default class RegistrationForm extends Component {
 	};
 
 	registerUser = () => {
-        const formBody = new FormData();
-        formBody.append('email', this.state.email);
-        formBody.append('password', this.state.password);
-        formBody.append('username', this.state.username)
-		const data = { "email": this.state.email, "password": this.state.password };
+		const data = { email: this.state.email, password: this.state.password };
 		fetch('https://reqres.in/api/register', {
 			method: 'POST',
-			body: formBody
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
 		}).then((resp) => {
 			console.log(resp);
 		});
