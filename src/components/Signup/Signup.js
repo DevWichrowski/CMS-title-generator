@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import './Signup.scss';
 
 export default class Signup extends Component {
 	constructor(props) {
@@ -42,13 +43,14 @@ export default class Signup extends Component {
 
 	render() {
 		return (
-			<div className="login-form">
+			<div className="signup">
+			<h1>Signup</h1>
 				<Form>
 					<Form.Group controlId="formBasicEmail">
 						<Form.Label>Email address</Form.Label>
 						<Form.Control
 							type="email"
-							placeholder="Enter email"
+							placeholder="Please enter email"
 							value={this.state.email}
 							onChange={this.saveEmail}
 						/>
@@ -56,10 +58,10 @@ export default class Signup extends Component {
 					</Form.Group>
 
 					<Form.Group>
-						<Form.Label>Email address</Form.Label>
+						<Form.Label>Username</Form.Label>
 						<Form.Control
 							type="text"
-							placeholder="Enter email"
+							placeholder="Please enter username"
 							value={this.state.username}
 							onChange={this.saveUsername}
 						/>
@@ -70,14 +72,21 @@ export default class Signup extends Component {
 						<Form.Label>Password</Form.Label>
 						<Form.Control
 							type="password"
-							placeholder="Password"
+							placeholder="Please enter password"
 							value={this.state.password}
 							onChange={this.savePassword}
 						/>
 					</Form.Group>
 
-					<Form.Group controlId="formBasicChecbox">
-						<Form.Check type="checkbox" label="Check me out" />
+
+					<Form.Group controlId="formBasicPassword">
+						<Form.Label></Form.Label>
+						<Form.Control
+							type="password"
+							placeholder="Please repeat password"
+							value={this.state.password}
+							onChange={this.savePassword}
+						/>
 					</Form.Group>
 					<Button variant="primary" onClick={this.registerUser}>
 						Submit
