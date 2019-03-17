@@ -16,10 +16,6 @@ export default function GuestMenu() {
 							<NavLink to="/" className="nav-link">
 								Home
 							</NavLink>
-
-							<NavLink to="/generator" className="nav-link" disabled>
-								Generator
-							</NavLink>
 						</Nav>
 						<Nav>
 							<NavLink className="nav-link" to="/signup">

@@ -1,7 +1,7 @@
 import * as UserActions from '../actions/usersActions';
 
 const initialState = {
-	userLoggedIn: false,
+	userLoggedIn: true,
 };
 
 export function usersReducer(state = initialState, action) {
