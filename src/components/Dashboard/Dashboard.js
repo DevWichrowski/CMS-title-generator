@@ -7,10 +7,6 @@ import { getLoginStatus } from '../../store/selectors/users.selectors';
 class Dashboard extends Component {
     constructor(props){
         super(props);
-
-        this.state ={
-            loggedIn: true,
-        }
     }
 
   render() {
