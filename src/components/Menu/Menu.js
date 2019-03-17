@@ -7,7 +7,7 @@ export default class Menu extends Component {
     super(props);
 
     this.state = {
-      loggedIn: true,
+      loggedIn: false,
     };
   }
   render() {
