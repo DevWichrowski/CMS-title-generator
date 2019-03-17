@@ -7,18 +7,25 @@ export default class GuestMenu extends Component {
 		return (
 			<div>
 				<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-					<Navbar.Brand href="#home">CMS Title Generator</Navbar.Brand>
+					<NavLink to="/">
+						<Navbar.Brand>CMS Title generator</Navbar.Brand>
+					</NavLink>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="mr-auto">
-							<Nav.Link><NavLink to="/about">About</NavLink></Nav.Link>
-							<Nav.Link href="#generator" disabled>Generator</Nav.Link>
+							<NavLink to="/" className="nav-link">
+								Home
+							</NavLink>
+
+							<NavLink to="/generator" className="nav-link" disabled>
+								Generator
+							</NavLink>
 						</Nav>
 						<Nav>
-							<Nav.Link href="#signup">Signup</Nav.Link>
-							<Nav.Link eventKey={2} href="#login">
-								Login
-							</Nav.Link>
+							<NavLink className="nav-link" to="/account">
+								Signup
+							</NavLink>
+							<Nav.Link className="nav-link">Login</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
