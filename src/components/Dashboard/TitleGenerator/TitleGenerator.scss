@@ -12,13 +12,19 @@
     }
 
     .custom-textarea:focus {
-        // outline: 3px solid rgba(255, 0, 0, 0.63);
         outline: unset;
-        box-shadow: 0 0 2pt 1pt red;   }
+        box-shadow: 0 0 2pt 1pt red;
+    }
 
     .titles-textarea {
         width: 60%;
         margin: 50px auto;
+    }
+
+    .generate-button {
+        display: block;
+        width: 60%;
+        margin: 20px auto;
     }
 
     .ulrs-textarea {

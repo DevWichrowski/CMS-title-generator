@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getLoginStatus } from '../../../store/selectors/users.selectors';
 import './TitleGenerator.scss';
+import { Button } from 'react-bootstrap';
 
 class TitleGenerator extends Component {
 	render() {
@@ -17,6 +18,12 @@ class TitleGenerator extends Component {
 					<p>Enter all urls below</p>
 					<textarea className="custom-textarea" />
 				</div>
+				<Button className="generate-button" variant="danger">
+					Generate
+				</Button>
+				<Button className="generate-button" variant="danger">
+					Generate to file
+				</Button>
 			</div>
 		);
 	}
