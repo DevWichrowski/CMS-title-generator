@@ -8,7 +8,13 @@ class TitleGenerator extends Component {
 		return (
 			<div className="title-generator">
 				<h1>Generator</h1>
-        <hr />
+				<hr />
+				<div className="titles-textarea">
+						<textarea  className="custom-textarea"/>
+					</div>
+					<div className="ulrs-textarea">
+						<textarea className="custom-textarea" />
+					</div>
 			</div>
 		);
 	}
