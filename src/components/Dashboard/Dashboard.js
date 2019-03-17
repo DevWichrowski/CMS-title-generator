@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import TitleGenerator from './TitleGenerator/TitleGenerator';
 import GuestDashboard from './GuestDashboard/GuestDashboard';
+import { connect } from 'react-redux';
+import { getLoginStatus } from '../../store/selectors/users.selectors';
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
     constructor(props){
         super(props);
 
@@ -14,8 +16,14 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        {this.state.loggedIn ? <TitleGenerator /> : <GuestDashboard />}
+        {this.props.loggedIn ? <TitleGenerator /> : <GuestDashboard />}
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+	loggedIn: getLoginStatus(state)
+});
+
+export default connect(mapStateToProps, null)(Dashboard);

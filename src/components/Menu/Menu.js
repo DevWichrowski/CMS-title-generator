@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import LoggedInMenu from './LoggedInMenu/LoggedInMenu';
 import GuestMenu from './GuestMenu/GuestMenu';
+import { connect } from 'react-redux';
+import { getLoginStatus } from '../../store/selectors/users.selectors';
 
-export default class Menu extends Component {
+class Menu extends Component {
   constructor(props){
     super(props);
 
@@ -13,8 +15,14 @@ export default class Menu extends Component {
   render() {
     return (
       <div>
-        {this.state.loggedIn ? <LoggedInMenu /> : <GuestMenu />}
+        {this.props.loggedIn ? <LoggedInMenu /> : <GuestMenu />}
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+	loggedIn: getLoginStatus(state)
+});
+
+export default connect(mapStateToProps, null)(Menu);
