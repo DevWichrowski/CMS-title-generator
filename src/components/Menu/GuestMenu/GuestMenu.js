@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
+import NavLink from 'react-bootstrap/NavLink';
 
 export default class GuestMenu extends Component {
 	render() {
@@ -10,7 +11,7 @@ export default class GuestMenu extends Component {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="mr-auto">
-							<Nav.Link href="#home">Home</Nav.Link>
+							<Nav.Link><NavLink to="/about">About</NavLink></Nav.Link>
 							<Nav.Link href="#generator" disabled>Generator</Nav.Link>
 						</Nav>
 						<Nav>
