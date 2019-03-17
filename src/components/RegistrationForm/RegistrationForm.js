@@ -82,7 +82,7 @@ export default class RegistrationForm extends Component {
 					<Button variant="primary" onClick={this.registerUser}>
 						Submit
 					</Button>
-				</Form>;
+				</Form>
 			</div>
 		);
 	}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 
 export default function LoggedInMenu() {
 	return (
@@ -18,7 +19,7 @@ export default function LoggedInMenu() {
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
-			</Navbar>;
+			</Navbar>
 		</div>
 	);
 }

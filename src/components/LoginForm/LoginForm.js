@@ -29,7 +29,7 @@ export default class LoginForm extends Component {
 					<Button variant="primary" type="submit">
 						Submit
 					</Button>
-				</Form>;
+				</Form>
 			</div>
 		);
 	}

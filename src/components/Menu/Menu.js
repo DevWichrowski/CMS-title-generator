@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react'
+import LoggedInMenu from './LoggedInMenu/LoggedInMenu';
 import GuestMenu from './GuestMenu/GuestMenu';
 
-export default function Menu() {
-  return (
-    <div>
-      <GuestMenu />
-    </div>
-  )
+export default class Menu extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      loggedIn: true,
+    };
+  }
+  render() {
+    return (
+      <div>
+        {this.state.loggedIn ? <LoggedInMenu /> : <GuestMenu />}
+      </div>
+    )
+  }
 }

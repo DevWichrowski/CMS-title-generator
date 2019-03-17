@@ -20,7 +20,7 @@ export default class GuestMenu extends Component {
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
-				</Navbar>;
+				</Navbar>
 			</div>
 		);
 	}
