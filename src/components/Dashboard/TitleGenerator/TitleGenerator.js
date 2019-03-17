@@ -19,7 +19,7 @@ class TitleGenerator extends Component {
 					<textarea className="custom-textarea" />
 				</div>
 				<Button className="generate-button" variant="danger">
-					Generate
+					Generate and copy to clipboard
 				</Button>
 				<Button className="generate-button" variant="danger">
 					Generate to file
