@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import NavLink from 'react-bootstrap/NavLink';
+import { NavLink } from 'react-router-dom';
 
-export default class GuestMenu extends Component {
-	render() {
-		return (
+export default function GuestMenu() {
+	return (
+		<div>
 			<div>
 				<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 					<NavLink to="/">
@@ -22,14 +22,16 @@ export default class GuestMenu extends Component {
 							</NavLink>
 						</Nav>
 						<Nav>
-							<NavLink className="nav-link" to="/account">
+							<NavLink className="nav-link" to="/signup">
 								Signup
 							</NavLink>
-							<Nav.Link className="nav-link">Login</Nav.Link>
+							<NavLink className="nav-link" to="/login">
+								Login
+							</NavLink>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
 			</div>
-		);
-	}
+		</div>
+	);
 }
