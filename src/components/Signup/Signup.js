@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-export default class RegistrationForm extends Component {
+export default class Signup extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

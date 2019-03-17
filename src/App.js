@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
-import LoginForm from './components/LoginForm/LoginForm';
-import RegistrationForm from './components/RegistrationForm/RegistrationForm';
-import {BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Menu from './components/Menu/Menu';
 import Dashboard from './components/Dashboard/Dashboard';
 
@@ -12,7 +10,7 @@ class App extends Component {
 			<BrowserRouter>
 				<div className="App">
 					<Menu />
-					<Dashboard />
+					<Route exact path="/" component={Dashboard} />
 				</div>
 			</BrowserRouter>
 		);
