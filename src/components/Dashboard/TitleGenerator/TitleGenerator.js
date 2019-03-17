@@ -10,11 +10,13 @@ class TitleGenerator extends Component {
 				<h1>Generator</h1>
 				<hr />
 				<div className="titles-textarea">
-						<textarea  className="custom-textarea"/>
-					</div>
-					<div className="ulrs-textarea">
-						<textarea className="custom-textarea" />
-					</div>
+					<p>Enter all titles below</p>
+					<textarea className="custom-textarea" />
+				</div>
+				<div className="ulrs-textarea">
+					<p>Enter all urls below</p>
+					<textarea className="custom-textarea" />
+				</div>
 			</div>
 		);
 	}
