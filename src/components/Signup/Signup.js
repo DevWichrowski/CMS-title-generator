@@ -88,7 +88,7 @@ export default class Signup extends Component {
 							onChange={this.savePassword}
 						/>
 					</Form.Group>
-					<Button variant="primary" onClick={this.registerUser}>
+					<Button variant="danger" onClick={this.registerUser}>
 						Submit
 					</Button>
 				</Form>

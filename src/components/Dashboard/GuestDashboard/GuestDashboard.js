@@ -11,10 +11,10 @@ export default function GuestDashboard() {
 				<p>To use this generator please Login or If you don't have account please Signup.</p>
 				<p>
 					<NavLink to="/login">
-						<Button variant="primary">Login</Button>
+						<Button variant="danger">Login</Button>
 					</NavLink>
 					<NavLink to="signup">
-						<Button variant="primary">Signup</Button>
+						<Button variant="danger">Signup</Button>
 					</NavLink>
 				</p>
 			</Jumbotron>

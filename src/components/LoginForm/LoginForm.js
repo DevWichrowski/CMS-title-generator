@@ -22,7 +22,7 @@ export default class LoginForm extends Component {
 						<Form.Label>Password</Form.Label>
 						<Form.Control type="password" placeholder="Password" />
 					</Form.Group>
-					<Button variant="primary" type="submit">
+					<Button variant="danger" type="submit">
 						Submit
 					</Button>
 				</Form>
