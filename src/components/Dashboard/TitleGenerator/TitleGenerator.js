@@ -47,7 +47,7 @@ class TitleGenerator extends Component {
 
 	handleAlertSuccess = () => {
 		this.setState({ alertSuccess: true });
-		setTimeout(() => this.setState({ alertSuccess: false }), 3000);
+		setTimeout(() => this.setState({ alertSuccess: false }), 100000);
 	};
 
 	handleAlertError = () => {
