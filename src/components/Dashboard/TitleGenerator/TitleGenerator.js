@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getLoginStatus } from '../../../store/selectors/users.selectors';
 import './TitleGenerator.scss';
-import { Button } from 'react-bootstrap';
+import { Button, Alert } from 'react-bootstrap';
+import AlertSuccess from './AlertSuccess/AlertSuccess';
+import AlertError from './AlertError/AlertError';
 
 class TitleGenerator extends Component {
 	constructor(props) {
@@ -12,7 +14,9 @@ class TitleGenerator extends Component {
 			titlesArray: [],
 			urlsArray: [],
 			separator: '\n',
-			generatedCodePHP: ''
+			generatedCodePHP: '',
+			alertSuccess: false,
+			alertError: false
 		};
 	}
 
@@ -42,13 +46,18 @@ class TitleGenerator extends Component {
 	};
 
 	submitGenerate = () => {
-		this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
-		console.log(this.state.generatedCodePHP);
+		if (this.state.titlesArray === this.state.urlsArray) {
+			this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
+			console.log(this.state.generatedCodePHP);
+		}
 	};
 
 	render() {
 		return (
 			<div className="title-generator">
+				{this.state.alertSuccess ? <AlertSuccess /> : null}
+				{this.state.alertError ? <AlertError /> : null}
+
 				<h1>Generator</h1>
 				<hr />
 				<div className="titles-textarea">
