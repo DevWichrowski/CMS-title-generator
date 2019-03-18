@@ -11,7 +11,8 @@ class TitleGenerator extends Component {
 		this.state = {
 			titlesArray: [],
 			urlsArray: [],
-			separator: '\n'
+			separator: '\n',
+			generatedCodePHP: ''
 		};
 	}
 
@@ -21,12 +22,28 @@ class TitleGenerator extends Component {
 
 	saveTitle = (event) => {
 		this.setState({ titlesArray: this.parseStringToArray(event.target.value) });
-		console.log('titleArray', this.state.titlesArray);
 	};
 
 	saveUrls = (event) => {
 		this.setState({ urlsArray: this.parseStringToArray(event.target.value) });
-		console.log('urlsArray', this.state.urlsArray);
+	};
+
+	generateCodePHP = (titles, urls) => {
+		let result = '';
+
+		titles.map((title, index) => {
+			result += `<?php\n`;
+			result += `if(${urls[index]} === {$_SERVER['HTTP_HOST']} . {$_SERVER['REQUEST_URI']}){\n`;
+			result += `echo '${title}'\n`;
+			result += `} ?>\n`;
+			return true;
+		});
+		return result;
+	};
+
+	submitGenerate = () => {
+		this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
+		console.log(this.state.generatedCodePHP);
 	};
 
 	render() {
@@ -42,7 +59,7 @@ class TitleGenerator extends Component {
 					<p>Enter all urls below</p>
 					<textarea className="custom-textarea" onChange={this.saveUrls} />
 				</div>
-				<Button className="generate-button" variant="danger">
+				<Button className="generate-button" variant="danger" onClick={this.submitGenerate}>
 					Generate and copy to clipboard
 				</Button>
 				<Button className="generate-button" variant="danger">
