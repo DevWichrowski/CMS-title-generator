@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getLoginStatus } from '../../../store/selectors/users.selectors';
 import './TitleGenerator.scss';
-import { Button, Alert } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import AlertSuccess from './AlertSuccess/AlertSuccess';
 import AlertError from './AlertError/AlertError';
 
