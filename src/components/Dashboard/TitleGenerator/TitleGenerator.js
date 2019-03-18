@@ -45,10 +45,23 @@ class TitleGenerator extends Component {
 		return result;
 	};
 
+	handleAlertSuccess = () => {
+		this.setState({ alertSuccess: true });
+		setTimeout(() => this.setState({ alertSuccess: false }), 3000);
+	};
+
+	handleAlertError = () => {
+		this.setState({ alertError: true });
+		setTimeout(() => this.setState({ alertError: false }), 3000);
+	};
+
 	submitGenerate = () => {
-		if (this.state.titlesArray === this.state.urlsArray) {
+		if (this.state.titlesArray.length === this.state.urlsArray.length) {
 			this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
 			console.log(this.state.generatedCodePHP);
+			this.handleAlertSuccess();
+		} else {
+			this.handleAlertError();
 		}
 	};
 
