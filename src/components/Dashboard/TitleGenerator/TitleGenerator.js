@@ -36,9 +36,9 @@ class TitleGenerator extends Component {
 		this.setState({ urlsArray: this.parseStringToArray(event.target.value) });
 	};
 
-	handleShowModal = () =>{
-		this.setState({showResultModal: !this.state.showResultModal})
-	}
+	handleShowModal = () => {
+		this.setState({ showResultModal: !this.state.showResultModal });
+	};
 
 	generateCodePHP = (titles, urls) => {
 		let result = '';
@@ -51,6 +51,7 @@ class TitleGenerator extends Component {
 			result += `?>\n`;
 			result += `\n`;
 			this.setState({ textareaResult: result });
+			console.log('qwe', this.state.textareaResult);
 			return true;
 		});
 		return result;
@@ -69,8 +70,9 @@ class TitleGenerator extends Component {
 	submitGenerate = () => {
 		if (this.state.titlesArray.length === this.state.urlsArray.length) {
 			this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
-			console.log(this.state.generatedCodePHP);
+			// console.log(this.state.generatedCodePHP);
 			this.handleAlertSuccess();
+			this.handleShowModal();
 		} else {
 			this.handleAlertError();
 		}
@@ -92,8 +94,12 @@ class TitleGenerator extends Component {
 					<p>Enter all urls below</p>
 					<textarea className="custom-textarea" onChange={this.saveUrls} />
 				</div>
-					<ResultModal handleModal={this.handleShowModal} showModal={this.state.showResultModal}/>
-				<Button className="generate-button" variant="danger" onClick={() => this.handleShowModal()}>
+				<ResultModal
+					handleModal={this.handleShowModal}
+					showModal={this.state.showResultModal}
+					resultValue={this.state.textareaResult}
+				/>
+				<Button className="generate-button" variant="danger" onClick={() => this.submitGenerate()}>
 					Generate
 				</Button>
 				<Button className="generate-button" variant="danger">
