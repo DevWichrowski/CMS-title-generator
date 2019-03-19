@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap';
 import AlertSuccess from './AlertSuccess/AlertSuccess';
 import AlertError from './AlertError/AlertError';
 import ButtonGenerate from './ButtonGenerate/ButtonGenerate';
+import ResultModal from './ResultModal/ResultModal';
 
 class TitleGenerator extends Component {
 	constructor(props) {
@@ -18,7 +19,8 @@ class TitleGenerator extends Component {
 			generatedCodePHP: '',
 			alertSuccess: false,
 			alertError: false,
-			textareaResult: ''
+			textareaResult: '',
+			showResultModal: false
 		};
 	}
 
@@ -33,6 +35,10 @@ class TitleGenerator extends Component {
 	saveUrls = (event) => {
 		this.setState({ urlsArray: this.parseStringToArray(event.target.value) });
 	};
+
+	handleShowModal = () =>{
+		this.setState({showResultModal: !this.state.showResultModal})
+	}
 
 	generateCodePHP = (titles, urls) => {
 		let result = '';
@@ -86,8 +92,10 @@ class TitleGenerator extends Component {
 					<p>Enter all urls below</p>
 					<textarea className="custom-textarea" onChange={this.saveUrls} />
 				</div>
-
-				<ButtonGenerate submit={this.submitGenerate} textareaResult={this.state.textareaResult} />
+					<ResultModal handleModal={this.handleShowModal} showModal={this.state.showResultModal}/>
+				<Button className="generate-button" variant="danger" onClick={() => this.handleShowModal()}>
+					Generate
+				</Button>
 				<Button className="generate-button" variant="danger">
 					Generate to file
 				</Button>
