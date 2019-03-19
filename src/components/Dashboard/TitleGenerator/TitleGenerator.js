@@ -5,6 +5,7 @@ import './TitleGenerator.scss';
 import { Button } from 'react-bootstrap';
 import AlertSuccess from './AlertSuccess/AlertSuccess';
 import AlertError from './AlertError/AlertError';
+import ButtonGenerate from './ButtonGenerate/ButtonGenerate';
 
 class TitleGenerator extends Component {
 	constructor(props) {
@@ -81,9 +82,8 @@ class TitleGenerator extends Component {
 					<p>Enter all urls below</p>
 					<textarea className="custom-textarea" onChange={this.saveUrls} />
 				</div>
-				<Button className="generate-button" variant="danger" onClick={this.submitGenerate}>
-					Generate and copy to clipboard
-				</Button>
+
+				<ButtonGenerate />
 				<Button className="generate-button" variant="danger">
 					Generate to file
 				</Button>
