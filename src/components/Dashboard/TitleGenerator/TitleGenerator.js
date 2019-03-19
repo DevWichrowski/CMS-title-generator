@@ -18,7 +18,7 @@ class TitleGenerator extends Component {
 			generatedCodePHP: '',
 			alertSuccess: false,
 			alertError: false,
-			textareaResult: '',
+			textareaResult: ''
 		};
 	}
 
@@ -39,12 +39,12 @@ class TitleGenerator extends Component {
 
 		titles.map((title, index) => {
 			result += `<?php\n`;
-			result += `if(${urls[index]} === {$_SERVER['HTTP_HOST']} . {$_SERVER['REQUEST_URI']}){\n`;
-			result += `echo '<title>${title}</title>'\n`;
-			result += `} ?>\n`;
+			result += `	if(${urls[index]} === {$_SERVER['HTTP_HOST']} . {$_SERVER['REQUEST_URI']}){\n`;
+			result += `	   echo '<title>${title}</title>'\n`;
+			result += `	  }\n`;
+			result += `?>\n`;
 			result += `\n`;
-			this.setState({textareaResult: result});
-			console.log('textareaValue:', this.state.textareaResult);
+			this.setState({ textareaResult: result });
 			return true;
 		});
 		return result;
@@ -87,7 +87,7 @@ class TitleGenerator extends Component {
 					<textarea className="custom-textarea" onChange={this.saveUrls} />
 				</div>
 
-				<ButtonGenerate submit={this.submitGenerate} textareaResult={this.state.textareaResult}/>
+				<ButtonGenerate submit={this.submitGenerate} textareaResult={this.state.textareaResult} />
 				<Button className="generate-button" variant="danger">
 					Generate to file
 				</Button>
