@@ -19,7 +19,7 @@ class TitleGenerator extends Component {
 			generatedCodePHP: '',
 			alertSuccess: false,
 			alertError: false,
-			textareaResult: '',
+			textareaResult: null,
 			showResultModal: false
 		};
 	}
@@ -38,6 +38,10 @@ class TitleGenerator extends Component {
 
 	handleShowModal = () => {
 		this.setState({ showResultModal: !this.state.showResultModal });
+
+		if(this.state.showResultModal === false){
+			this.setState({titlesArray: [], urlsArray: []});
+		}
 	};
 
 	generateCodePHP = (titles, urls) => {
@@ -51,7 +55,7 @@ class TitleGenerator extends Component {
 			result += `?>\n`;
 			result += `\n`;
 			this.setState({ textareaResult: result });
-			console.log('qwe', this.state.textareaResult);
+			// console.log('qwe', this.state.textareaResult);
 			return true;
 		});
 		return result;
@@ -68,11 +72,11 @@ class TitleGenerator extends Component {
 	};
 
 	submitGenerate = () => {
-		if (this.state.titlesArray.length === this.state.urlsArray.length) {
+		if (this.state.titlesArray.length > 0 && this.state.urlsArray.length > 0) {
 			this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
-			// console.log(this.state.generatedCodePHP);
 			this.handleAlertSuccess();
 			this.handleShowModal();
+			this.setState({titlesArray: [], urlsArray: []})
 		} else {
 			this.handleAlertError();
 		}
@@ -88,11 +92,11 @@ class TitleGenerator extends Component {
 				<hr />
 				<div className="titles-textarea">
 					<p>Enter all titles below</p>
-					<textarea className="custom-textarea" onChange={this.saveTitle} />
+					<textarea className="custom-textarea" onChange={this.saveTitle} value={this.state.titlesArray}/>
 				</div>
 				<div className="ulrs-textarea">
 					<p>Enter all urls below</p>
-					<textarea className="custom-textarea" onChange={this.saveUrls} />
+					<textarea className="custom-textarea" onChange={this.saveUrls} value={this.state.urlsArray}/>
 				</div>
 				<ResultModal
 					handleModal={this.handleShowModal}

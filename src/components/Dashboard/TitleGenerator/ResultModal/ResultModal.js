@@ -15,7 +15,7 @@ class ResultModal extends Component {
 						<Modal.Title>Generated results</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						<textarea value={this.props.resultValue} readOnly/>
+						<textarea value={this.props.resultValue} readOnly />
 					</Modal.Body>
 					{console.log(this.props)}
 					<Modal.Footer>
