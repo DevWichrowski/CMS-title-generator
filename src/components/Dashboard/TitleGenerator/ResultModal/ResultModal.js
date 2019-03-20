@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import './ResultModal.scss';
 
 class ResultModal extends Component {
-	constructor(props, context) {
+	constructor(props) {
 		super(props);
 	}
 
@@ -15,7 +15,7 @@ class ResultModal extends Component {
 						<Modal.Title>Generated results</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						<textarea className="custom-textarea" value={this.props.resultValue} readOnly/>
+						<textarea value={this.props.resultValue} readOnly/>
 					</Modal.Body>
 					{console.log(this.props)}
 					<Modal.Footer>
