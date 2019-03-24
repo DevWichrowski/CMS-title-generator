@@ -16,12 +16,6 @@ export default function LoggedInMenu() {
 							Genetator
 						</NavLink>
 					</Nav>
-					<Nav>
-						<NavLink className="nav-link" to="/account">
-							Account
-						</NavLink>
-						<Nav.Link className="nav-link">Logout</Nav.Link>
-					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
 		</div>
