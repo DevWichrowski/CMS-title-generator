@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getLoginStatus } from '../../../store/selectors/users.selectors';
 import './TitleGenerator.scss';
-import { Button } from 'react-bootstrap';
+import { Button, ToggleButton, ToggleButtonGroup, ButtonToolbar } from 'react-bootstrap';
 import AlertSuccess from './AlertSuccess/AlertSuccess';
 import AlertError from './AlertError/AlertError';
-import ButtonGenerate from './ButtonGenerate/ButtonGenerate';
 import ResultModal from './ResultModal/ResultModal';
 
 class TitleGenerator extends Component {
@@ -20,7 +19,8 @@ class TitleGenerator extends Component {
 			alertSuccess: false,
 			alertError: false,
 			textareaResult: null,
-			showResultModal: false
+			showResultModal: false,
+			languageMode: 'PHP'
 		};
 	}
 
@@ -39,8 +39,8 @@ class TitleGenerator extends Component {
 	handleShowModal = () => {
 		this.setState({ showResultModal: !this.state.showResultModal });
 
-		if(this.state.showResultModal === false){
-			this.setState({titlesArray: [], urlsArray: []});
+		if (this.state.showResultModal === false) {
+			this.setState({ titlesArray: [], urlsArray: [] });
 		}
 	};
 
@@ -55,7 +55,20 @@ class TitleGenerator extends Component {
 			result += `?>\n`;
 			result += `\n`;
 			this.setState({ textareaResult: result });
-			// console.log('qwe', this.state.textareaResult);
+			return true;
+		});
+		return result;
+	};
+
+	generateCodeSMARTY = (titles, urls) => {
+		let result = '';
+
+		titles.map((title, index) => {
+			result += `{if $smarty.server.REQUEST_URI eq "${urls}"} \n`;
+			result += `	   echo '<title>${title}</title>'\n`;
+			result += `{/if} \n`;
+			result += `\n`;
+			this.setState({ textareaResult: result });
 			return true;
 		});
 		return result;
@@ -71,12 +84,26 @@ class TitleGenerator extends Component {
 		setTimeout(() => this.setState({ alertError: false }), 3000);
 	};
 
+	handleLanduageMode = (language) => {
+		this.setState({ languageMode: language });
+		console.log(`Switched to: ${language}`);
+	};
+
 	submitGenerate = () => {
 		if (this.state.titlesArray.length > 0 && this.state.urlsArray.length > 0) {
-			this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
-			this.handleAlertSuccess();
-			this.handleShowModal();
-			this.setState({titlesArray: [], urlsArray: []})
+			if (this.state.languageMode === 'PHP') {
+				this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
+				this.handleAlertSuccess();
+				this.handleShowModal();
+				this.setState({ titlesArray: [], urlsArray: [] });
+			} else {
+				this.setState({
+					generatedCodePHP: this.generateCodeSMARTY(this.state.titlesArray, this.state.urlsArray)
+				});
+				this.handleAlertSuccess();
+				this.handleShowModal();
+				this.setState({ titlesArray: [], urlsArray: [] });
+			}
 		} else {
 			this.handleAlertError();
 		}
@@ -88,15 +115,30 @@ class TitleGenerator extends Component {
 				{this.state.alertSuccess ? <AlertSuccess /> : null}
 				{this.state.alertError ? <AlertError /> : null}
 
-				<h1>Generator</h1>
+				<h1>Title generator</h1>
 				<hr />
+
+				<div className="language-mode">
+					<p>You code will be generated in: {this.state.languageMode}</p>
+					<ButtonToolbar>
+						<ToggleButtonGroup type="radio" name="options" defaultValue={1}>
+							<ToggleButton value={1} variant="danger" onClick={() => this.handleLanduageMode('PHP')}>
+								PHP Expressions
+							</ToggleButton>
+							<ToggleButton value={2} variant="danger" onClick={() => this.handleLanduageMode('SMARTY')}>
+								SMARTY Expressions
+							</ToggleButton>
+						</ToggleButtonGroup>
+					</ButtonToolbar>
+				</div>
+
 				<div className="titles-textarea">
 					<p>Enter all titles below</p>
-					<textarea className="custom-textarea" onChange={this.saveTitle}/>
+					<textarea className="custom-textarea" onChange={this.saveTitle} />
 				</div>
 				<div className="ulrs-textarea">
 					<p>Enter all urls below</p>
-					<textarea className="custom-textarea" onChange={this.saveUrls}/>
+					<textarea className="custom-textarea" onChange={this.saveUrls} />
 				</div>
 				<ResultModal
 					handleModal={this.handleShowModal}
