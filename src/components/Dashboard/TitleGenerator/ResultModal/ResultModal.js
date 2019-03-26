@@ -5,7 +5,22 @@ import './ResultModal.scss';
 class ResultModal extends Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			copySuccess: '',
+		}
 	}
+
+	copyToClipboard = (e) => {
+		this.textArea.select();
+		document.execCommand('copy');
+		e.target.focus();
+		this.setState({ copySuccess: 'Skopiowano do schowka!' });
+		setTimeout(() => {
+			this.setState({ copySuccess: '' });
+		}, 2000);
+		console.log('asd');
+	};
 
 	render() {
 		return (
@@ -15,14 +30,14 @@ class ResultModal extends Component {
 						<Modal.Title>Generated results</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						<textarea value={this.props.resultValue} readOnly />
+						<textarea value={this.props.resultValue} readOnly ref={(textarea) => (this.textArea = textarea)}/>
 					</Modal.Body>
 					{console.log(this.props)}
 					<Modal.Footer>
 						<Button variant="secondary" onClick={this.props.handleModal}>
 							Close
 						</Button>
-						<Button variant="danger">Copy to clipboard</Button>
+						<Button variant="danger" onClick={this.copyToClipboard}>Copy to clipboard</Button>
 					</Modal.Footer>
 				</Modal>
 			</div>

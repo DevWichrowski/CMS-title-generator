@@ -13,7 +13,7 @@ export default function LoggedInMenu() {
 				<Navbar.Collapse id="responsive-navbar-nav">
 					<Nav className="mr-auto">
 						<NavLink to="/" className="nav-link">
-							Genetator
+							Title generator
 						</NavLink>
 					</Nav>
 				</Navbar.Collapse>
