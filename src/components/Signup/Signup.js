@@ -14,17 +14,14 @@ export default class Signup extends Component {
 
 	saveEmail = (event) => {
 		this.setState({ email: event.target.value });
-		console.log(this.state.email);
 	};
 
 	saveUsername = (event) => {
 		this.setState({ username: event.target.value });
-		console.log(this.state.password);
 	};
 
 	savePassword = (event) => {
 		this.setState({ password: event.target.value });
-		console.log(this.state.password);
 	};
 
 	registerUser = () => {

@@ -19,7 +19,6 @@ class ResultModal extends Component {
 		setTimeout(() => {
 			this.setState({ copySuccess: '' });
 		}, 2000);
-		console.log('asd');
 	};
 
 	render() {
@@ -32,7 +31,6 @@ class ResultModal extends Component {
 					<Modal.Body>
 						<textarea value={this.props.resultValue} readOnly ref={(textarea) => (this.textArea = textarea)}/>
 					</Modal.Body>
-					{console.log(this.props)}
 					<Modal.Footer>
 						<Button variant="secondary" onClick={this.props.handleModal}>
 							Close
