@@ -15,7 +15,7 @@ class TitleGenerator extends Component {
 		this.state = {
 			titlesArray: [],
 			urlsArray: [],
-			separator: '[\\n]+',
+			separator: '\n',
 			generatedCodePHP: '',
 			alertSuccess: false,
 			alertError: false,
@@ -92,11 +92,11 @@ class TitleGenerator extends Component {
 				<hr />
 				<div className="titles-textarea">
 					<p>Enter all titles below</p>
-					<textarea className="custom-textarea" onChange={this.saveTitle} value={this.state.titlesArray}/>
+					<textarea className="custom-textarea" onChange={this.saveTitle}/>
 				</div>
 				<div className="ulrs-textarea">
 					<p>Enter all urls below</p>
-					<textarea className="custom-textarea" onChange={this.saveUrls} value={this.state.urlsArray}/>
+					<textarea className="custom-textarea" onChange={this.saveUrls}/>
 				</div>
 				<ResultModal
 					handleModal={this.handleShowModal}
