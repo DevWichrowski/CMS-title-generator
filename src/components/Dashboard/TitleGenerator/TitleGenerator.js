@@ -109,6 +109,30 @@ class TitleGenerator extends Component {
 		}
 	};
 
+	saveResultToFile = () => {
+		if (this.state.titlesArray.length > 0 && this.state.urlsArray.length > 0) {
+			if (this.state.languageMode === 'PHP') {
+				this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
+				this.handleAlertSuccess();
+				const FileSaver = require('file-saver');
+				const blob = new Blob([ this.state.generatedCodePHP ], { type: 'text/plain;charset=utf-8' });
+				FileSaver.saveAs(blob, 'PHP_titles.php');
+				this.setState({ titlesArray: [], urlsArray: [] });
+			} else {
+				this.setState({
+					generatedCodePHP: this.generateCodeSMARTY(this.state.titlesArray, this.state.urlsArray)
+				});
+				this.handleAlertSuccess();
+				const FileSaver = require('file-saver');
+				const blob = new Blob([ this.state.generatedCodePHP ], { type: 'text/plain;charset=utf-8' });
+				FileSaver.saveAs(blob, 'Smarty_titles.php');
+				this.setState({ titlesArray: [], urlsArray: [] });
+			}
+		} else {
+			this.handleAlertError();
+		}
+	};
+
 	render() {
 		return (
 			<div className="title-generator">
@@ -148,7 +172,7 @@ class TitleGenerator extends Component {
 				<Button className="generate-button" variant="danger" onClick={() => this.submitGenerate()}>
 					Generate
 				</Button>
-				<Button className="generate-button" variant="danger">
+				<Button className="generate-button" variant="danger" onClick={() => this.saveResultToFile()}>
 					Generate to file
 				</Button>
 			</div>
