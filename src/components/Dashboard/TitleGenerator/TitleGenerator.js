@@ -15,7 +15,7 @@ class TitleGenerator extends Component {
 		this.state = {
 			titlesArray: [],
 			urlsArray: [],
-			separator: '\n',
+			separator: '[\\n]+',
 			generatedCodePHP: '',
 			alertSuccess: false,
 			alertError: false,
