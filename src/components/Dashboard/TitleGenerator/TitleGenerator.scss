@@ -32,6 +32,20 @@
         margin: 50px auto;
     }
 
+    .language-mode {
+        width: 30%;
+        display: block;
+        margin: 0 auto;
+
+        p {
+            text-align: center;
+        }
+
+        .btn-toolbar {
+            justify-content: center;
+        }
+    }
+
     h1 {
         text-align: center;
         margin: 60px auto 20px auto;
