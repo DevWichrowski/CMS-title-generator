@@ -3,6 +3,7 @@ import './App.scss';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Menu from './components/Menu/Menu';
 import Dashboard from './components/Dashboard/Dashboard';
+import TitleGenerator from './components/TitleGenerator/TitleGenerator';
 
 class App extends Component {
 	render() {
@@ -10,7 +11,7 @@ class App extends Component {
 			<BrowserRouter>
 				<div className="App">
 					<Menu />
-					<Route exact path="/" component={Dashboard} />
+					<Route exact path="/" component={TitleGenerator} />
 				</div>
 			</BrowserRouter>
 		);

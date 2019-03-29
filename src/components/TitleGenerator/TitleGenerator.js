@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getLoginStatus } from '../../../store/selectors/users.selectors';
 import './TitleGenerator.scss';
 import { Button, ToggleButton, ToggleButtonGroup, ButtonToolbar } from 'react-bootstrap';
 import AlertSuccess from './AlertSuccess/AlertSuccess';
@@ -221,8 +219,4 @@ class TitleGenerator extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	loggedIn: getLoginStatus(state)
-});
-
-export default connect(mapStateToProps, null)(TitleGenerator);
+export default TitleGenerator;

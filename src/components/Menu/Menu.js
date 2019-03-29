@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import LoggedInMenu from './LoggedInMenu/LoggedInMenu';
-import GuestMenu from './GuestMenu/GuestMenu';
 import { connect } from 'react-redux';
 import { getLoginStatus } from '../../store/selectors/users.selectors';
+import { Navbar, Nav } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 class Menu extends Component {
   constructor(props){
@@ -11,7 +11,19 @@ class Menu extends Component {
   render() {
     return (
       <div>
-        {this.props.loggedIn ? <LoggedInMenu /> : <GuestMenu />}
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+				<NavLink to="/">
+					<Navbar.Brand>CMS Title generator</Navbar.Brand>
+				</NavLink>
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+				<Navbar.Collapse id="responsive-navbar-nav">
+					<Nav className="mr-auto">
+						<NavLink to="/" className="nav-link">
+							Title generator
+						</NavLink>
+					</Nav>
+				</Navbar.Collapse>
+			</Navbar>
       </div>
     )
   }
