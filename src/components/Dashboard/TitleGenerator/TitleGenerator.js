@@ -20,7 +20,8 @@ class TitleGenerator extends Component {
 			alertError: false,
 			textareaResult: null,
 			showResultModal: false,
-			languageMode: 'PHP'
+			languageMode: 'PHP',
+			javascriptVisibility: true
 		};
 	}
 
@@ -183,13 +184,15 @@ class TitleGenerator extends Component {
 							<ToggleButton value={2} variant="danger" onClick={() => this.handleLanduageMode('SMARTY')}>
 								SMARTY
 							</ToggleButton>
-							<ToggleButton
-								value={3}
-								variant="danger"
-								onClick={() => this.handleLanduageMode('Javascript')}
-							>
-								Javascript
-							</ToggleButton>
+							{this.state.javascriptVisibility ? (
+								<ToggleButton
+									value={3}
+									variant="danger"
+									onClick={() => this.handleLanduageMode('Javascript')}
+								>
+									Javascript
+								</ToggleButton>
+							) : null}
 						</ToggleButtonGroup>
 					</ButtonToolbar>
 				</div>
