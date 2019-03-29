@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import TitleGenerator from './TitleGenerator/TitleGenerator';
-import GuestDashboard from './GuestDashboard/GuestDashboard';
 import { connect } from 'react-redux';
 import { getLoginStatus } from '../../store/selectors/users.selectors';
 
@@ -12,7 +11,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        {this.props.loggedIn ? <TitleGenerator /> : <GuestDashboard />}
+        <TitleGenerator />
       </div>
     )
   }
