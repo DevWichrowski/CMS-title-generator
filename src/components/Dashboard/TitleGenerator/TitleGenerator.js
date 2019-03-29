@@ -178,10 +178,10 @@ class TitleGenerator extends Component {
 					<ButtonToolbar>
 						<ToggleButtonGroup type="radio" name="options" defaultValue={1}>
 							<ToggleButton value={1} variant="danger" onClick={() => this.handleLanduageMode('PHP')}>
-								PHP Expressions
+								PHP
 							</ToggleButton>
 							<ToggleButton value={2} variant="danger" onClick={() => this.handleLanduageMode('SMARTY')}>
-								SMARTY Expressions
+								SMARTY
 							</ToggleButton>
 							<ToggleButton
 								value={3}
