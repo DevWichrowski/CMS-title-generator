@@ -74,6 +74,21 @@ class TitleGenerator extends Component {
 		return result;
 	};
 
+	generateCodeJS = (titles, urls) => {
+		let result = '';
+
+		titles.map((title, index) => {
+			result += `<script> \n`;
+			result += `if(window.location.href === ${urls}){\n`;
+			result += `document.title = ${title};\n`;
+			result += `}\n`;
+			result += `</script>\n`;
+			this.setState({ textareaResult: result });
+			return true;
+		});
+		return result;
+	};
+
 	handleAlertSuccess = () => {
 		this.setState({ alertSuccess: true });
 		setTimeout(() => this.setState({ alertSuccess: false }), 3000);
@@ -96,9 +111,16 @@ class TitleGenerator extends Component {
 				this.handleAlertSuccess();
 				this.handleShowModal();
 				this.setState({ titlesArray: [], urlsArray: [] });
-			} else {
+			} else if(this.state.languageMode === 'SMARTY'){
 				this.setState({
 					generatedCodePHP: this.generateCodeSMARTY(this.state.titlesArray, this.state.urlsArray)
+				});
+				this.handleAlertSuccess();
+				this.handleShowModal();
+				this.setState({ titlesArray: [], urlsArray: [] });
+			} else {
+				this.setState({
+					generatedCodePHP: this.generateCodeJS(this.state.titlesArray, this.state.urlsArray)
 				});
 				this.handleAlertSuccess();
 				this.handleShowModal();
