@@ -152,6 +152,9 @@ class TitleGenerator extends Component {
 							<ToggleButton value={2} variant="danger" onClick={() => this.handleLanduageMode('SMARTY')}>
 								SMARTY Expressions
 							</ToggleButton>
+							<ToggleButton value={2} variant="danger" onClick={() => this.handleLanduageMode('Javascript')}>
+								Javascript
+							</ToggleButton>
 						</ToggleButtonGroup>
 					</ButtonToolbar>
 				</div>
