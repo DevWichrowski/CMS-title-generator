@@ -15,7 +15,7 @@ class TitleGenerator extends Component {
 			titlesArray: [],
 			urlsArray: [],
 			separator: '\n',
-			generatedCodePHP: '',
+			generatedCode: '',
 			alertSuccess: false,
 			alertError: false,
 			textareaResult: null,
@@ -79,8 +79,8 @@ class TitleGenerator extends Component {
 
 		titles.map((title, index) => {
 			result += `<script> \n`;
-			result += `if(window.location.href === ${urls}){\n`;
-			result += `document.title = ${title};\n`;
+			result += `if(window.location.href === '${urls}'){\n`;
+			result += `document.title = '${title}';\n`;
 			result += `}\n`;
 			result += `</script>\n`;
 			this.setState({ textareaResult: result });
@@ -107,20 +107,20 @@ class TitleGenerator extends Component {
 	submitGenerate = () => {
 		if (this.state.titlesArray.length > 0 && this.state.urlsArray.length > 0) {
 			if (this.state.languageMode === 'PHP') {
-				this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
+				this.setState({ generatedCode: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
 				this.handleAlertSuccess();
 				this.handleShowModal();
 				this.setState({ titlesArray: [], urlsArray: [] });
-			} else if(this.state.languageMode === 'SMARTY'){
+			} else if (this.state.languageMode === 'SMARTY') {
 				this.setState({
-					generatedCodePHP: this.generateCodeSMARTY(this.state.titlesArray, this.state.urlsArray)
+					generatedCode: this.generateCodeSMARTY(this.state.titlesArray, this.state.urlsArray)
 				});
 				this.handleAlertSuccess();
 				this.handleShowModal();
 				this.setState({ titlesArray: [], urlsArray: [] });
 			} else {
 				this.setState({
-					generatedCodePHP: this.generateCodeJS(this.state.titlesArray, this.state.urlsArray)
+					generatedCode: this.generateCodeJS(this.state.titlesArray, this.state.urlsArray)
 				});
 				this.handleAlertSuccess();
 				this.handleShowModal();
@@ -134,20 +134,29 @@ class TitleGenerator extends Component {
 	saveResultToFile = () => {
 		if (this.state.titlesArray.length > 0 && this.state.urlsArray.length > 0) {
 			if (this.state.languageMode === 'PHP') {
-				this.setState({ generatedCodePHP: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
+				this.setState({ generatedCode: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
 				this.handleAlertSuccess();
 				const FileSaver = require('file-saver');
-				const blob = new Blob([ this.state.generatedCodePHP ], { type: 'text/plain;charset=utf-8' });
+				const blob = new Blob([ this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
 				FileSaver.saveAs(blob, 'PHP_titles.php');
 				this.setState({ titlesArray: [], urlsArray: [] });
-			} else {
+			} else if (this.state.languageMode === 'SMARTY') {
 				this.setState({
-					generatedCodePHP: this.generateCodeSMARTY(this.state.titlesArray, this.state.urlsArray)
+					generatedCode: this.generateCodeSMARTY(this.state.titlesArray, this.state.urlsArray)
 				});
 				this.handleAlertSuccess();
 				const FileSaver = require('file-saver');
-				const blob = new Blob([ this.state.generatedCodePHP ], { type: 'text/plain;charset=utf-8' });
+				const blob = new Blob([ this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
 				FileSaver.saveAs(blob, 'Smarty_titles.php');
+				this.setState({ titlesArray: [], urlsArray: [] });
+			} else {
+				this.setState({
+					generatedCode: this.generateCodeJS(this.state.titlesArray, this.state.urlsArray)
+				});
+				this.handleAlertSuccess();
+				const FileSaver = require('file-saver');
+				const blob = new Blob([ this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
+				FileSaver.saveAs(blob, 'Javascript_titles.js');
 				this.setState({ titlesArray: [], urlsArray: [] });
 			}
 		} else {
@@ -174,7 +183,11 @@ class TitleGenerator extends Component {
 							<ToggleButton value={2} variant="danger" onClick={() => this.handleLanduageMode('SMARTY')}>
 								SMARTY Expressions
 							</ToggleButton>
-							<ToggleButton value={2} variant="danger" onClick={() => this.handleLanduageMode('Javascript')}>
+							<ToggleButton
+								value={3}
+								variant="danger"
+								onClick={() => this.handleLanduageMode('Javascript')}
+							>
 								Javascript
 							</ToggleButton>
 						</ToggleButtonGroup>
