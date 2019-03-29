@@ -110,21 +110,18 @@ class TitleGenerator extends Component {
 				this.setState({ generatedCode: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
 				this.handleAlertSuccess();
 				this.handleShowModal();
-				// this.setState({ titlesArray: [], urlsArray: [] });
 			} else if (this.state.languageMode === 'SMARTY') {
 				this.setState({
 					generatedCode: this.generateCodeSMARTY(this.state.titlesArray, this.state.urlsArray)
 				});
 				this.handleAlertSuccess();
 				this.handleShowModal();
-				// this.setState({ titlesArray: [], urlsArray: [] });
 			} else {
 				this.setState({
 					generatedCode: this.generateCodeJS(this.state.titlesArray, this.state.urlsArray)
 				});
 				this.handleAlertSuccess();
 				this.handleShowModal();
-				// this.setState({ titlesArray: [], urlsArray: [] });
 			}
 		} else {
 			this.handleAlertError();
@@ -135,29 +132,32 @@ class TitleGenerator extends Component {
 		if (this.state.titlesArray.length > 0 && this.state.urlsArray.length > 0) {
 			if (this.state.languageMode === 'PHP') {
 				this.setState({ generatedCode: this.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
-				this.handleAlertSuccess();
-				const FileSaver = require('file-saver');
-				const blob = new Blob([ ...this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
-				FileSaver.saveAs(blob, 'PHP_titles.php');
-				// this.setState({ titlesArray: [], urlsArray: [] });
+				setTimeout(() => {
+					this.handleAlertSuccess();
+					const FileSaver = require('file-saver');
+					const blob = new Blob([ ...this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
+					FileSaver.saveAs(blob, 'PHP_titles.php');
+				}, 1000);
 			} else if (this.state.languageMode === 'SMARTY') {
 				this.setState({
 					generatedCode: this.generateCodeSMARTY(this.state.titlesArray, this.state.urlsArray)
 				});
-				this.handleAlertSuccess();
-				const FileSaver = require('file-saver');
-				const blob = new Blob([ ...this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
-				FileSaver.saveAs(blob, 'Smarty_titles.php');
-				// this.setState({ titlesArray: [], urlsArray: [] });
+				setTimeout(() => {
+					this.handleAlertSuccess();
+					const FileSaver = require('file-saver');
+					const blob = new Blob([ ...this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
+					FileSaver.saveAs(blob, 'Smarty_titles.php');
+				}, 1000);
 			} else {
 				this.setState({
 					generatedCode: this.generateCodeJS(this.state.titlesArray, this.state.urlsArray)
 				});
-				this.handleAlertSuccess();
-				const FileSaver = require('file-saver');
-				const blob = new Blob([ ...this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
-				FileSaver.saveAs(blob, 'Javascript_titles.js');
-				// this.setState({ titlesArray: [], urlsArray: [] });
+				setTimeout(() => {
+					this.handleAlertSuccess();
+					const FileSaver = require('file-saver');
+					const blob = new Blob([ ...this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
+					FileSaver.saveAs(blob, 'Javascript_titles.js');
+				}, 1000);
 			}
 		} else {
 			this.handleAlertError();
