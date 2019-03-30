@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './TitleGenerator.scss';
 import GeneratorTemplate from '../GeneratorTemplate/GeneratorTemplate';
 
 class TitleGenerator extends Component {
