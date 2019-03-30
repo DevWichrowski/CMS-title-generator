@@ -21,7 +21,7 @@ class Menu extends Component {
 							<NavLink to="/title-generator" className="nav-link">
 								Title generator
 							</NavLink>
-							<NavLink to="/Description-generator" className="nav-link">
+							<NavLink to="/description-generator" className="nav-link">
 								Description generator
 							</NavLink>
 						</Nav>

@@ -67,6 +67,7 @@ class TitleGenerator extends Component {
 					javascriptVisibility={this.state.javascriptVisibility}
 					textareaResult={this.state.textareaResult}
 					generatorType={'Title'}
+					generatorTypes={'titles'}
 				/>
 			</div>
 		);

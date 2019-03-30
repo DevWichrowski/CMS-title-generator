@@ -53,7 +53,6 @@ export default class GeneratorTemplate extends Component {
 
 	handleLanduageMode = (language) => {
 		this.setState({ languageMode: language });
-		console.log(`Switched to: ${language}`);
 	};
 
 	submitGenerate = () => {
@@ -149,7 +148,7 @@ export default class GeneratorTemplate extends Component {
 				</div>
 
 				<div className="titles-textarea">
-					<p>Enter all titles below</p>
+					<p>Enter all {this.props.generatorTypes} below</p>
 					<textarea className="custom-textarea" onChange={this.saveTitle} />
 				</div>
 				<div className="ulrs-textarea">
