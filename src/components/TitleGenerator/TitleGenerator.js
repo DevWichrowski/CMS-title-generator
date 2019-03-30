@@ -16,7 +16,7 @@ class TitleGenerator extends Component {
 
 		titles.map((title, index) => {
 			result += `<?php\n`;
-			result += `	if(${urls[index]} === {$_SERVER['HTTP_HOST']} . {$_SERVER['REQUEST_URI']}){\n`;
+			result += `	if("${urls[index]}" === {$_SERVER['HTTP_HOST']} . {$_SERVER['REQUEST_URI']}){\n`;
 			result += `	   echo '<title>${title}</title>'\n`;
 			result += `	  }\n`;
 			result += `?>\n`;

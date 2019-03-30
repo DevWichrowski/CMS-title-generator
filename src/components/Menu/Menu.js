@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getLoginStatus } from '../../store/selectors/users.selectors';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import NoindexGenerator from '../NoindexGenerator/NoindexGenerator';
 
 class Menu extends Component {
 	constructor(props) {
@@ -23,6 +24,9 @@ class Menu extends Component {
 							</NavLink>
 							<NavLink to="/description-generator" className="nav-link">
 								Description generator
+							</NavLink>
+							<NavLink to="/noindex-generator" className="nav-link">
+								Noindex generator
 							</NavLink>
 						</Nav>
 					</Navbar.Collapse>

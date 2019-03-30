@@ -55,6 +55,7 @@ class DescriptionGenerator extends Component {
 		});
 		return result;
 	};
+	
 	render() {
 		return (
 			<div className="description-generator">
