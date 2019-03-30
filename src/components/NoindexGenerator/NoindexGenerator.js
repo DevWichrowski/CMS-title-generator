@@ -18,7 +18,8 @@ class NoindexGenerator extends Component {
 			languageMode: 'PHP',
 			textareaResult: null,
 			javascriptVisibility: false,
-			generateTypes: 'Noindex'
+			generateTypes: 'Noindex',
+			nofollow: true
 		};
 	}
 
@@ -28,7 +29,7 @@ class NoindexGenerator extends Component {
 
 	saveUrls = (event) => {
 		this.setState({ urlsArray: this.parseStringToArray(event.target.value) });
-		console.log('urlarray:', this.state.urlsArray)
+		console.log('urlarray:', this.state.urlsArray);
 	};
 
 	handleShowModal = () => {
@@ -53,13 +54,23 @@ class NoindexGenerator extends Component {
 		this.setState({ languageMode: language });
 	};
 
+	switchToNofollow = () => {
+		this.setState({ nofollow: true });
+	};
+
+	switchToFollow = () => {
+		this.setState({ nofollow: false });
+	};
+
 	generateCodePHP = (urls) => {
 		let result = '';
 
 		urls.map((url, index) => {
 			result += `<?php\n`;
 			result += `	if("${urls[index]}" === {$_SERVER['HTTP_HOST']} . {$_SERVER['REQUEST_URI']}){\n`;
-			result += `	   echo '<meta name="robots" content="noindex, nofollow" />'\n`;
+			result += `	   echo '<meta name="robots" content="noindex, ${this.state.nofollow
+				? 'nofollow'
+				: 'follow'}" />'\n`;
 			result += `	  }\n`;
 			result += `?>\n`;
 			result += `\n`;
@@ -74,7 +85,9 @@ class NoindexGenerator extends Component {
 
 		urls.map((url, index) => {
 			result += `{if $smarty.server.REQUEST_URI eq "${urls}"} \n`;
-			result += `	   echo '<meta name="robots" content="noindex, nofollow" />'\n`;
+			result += `	   echo '<meta name="robots" content="noindex, ${this.state.nofollow
+				? 'nofollow'
+				: 'follow'}" />'\n`;
 			result += `{/if} \n`;
 			result += `\n`;
 			this.setState({ textareaResult: result });
@@ -189,6 +202,17 @@ class NoindexGenerator extends Component {
 									Javascript
 								</ToggleButton>
 							) : null}
+						</ToggleButtonGroup>
+					</ButtonToolbar>
+
+					<ButtonToolbar>
+						<ToggleButtonGroup type="radio" name="options" defaultValue={1}>
+							<ToggleButton value={1} variant="danger" onClick={this.switchToNofollow}>
+								Nofollow
+							</ToggleButton>
+							<ToggleButton value={2} variant="danger" onClick={this.switchToFollow}>
+								Follow
+							</ToggleButton>
 						</ToggleButtonGroup>
 					</ButtonToolbar>
 				</div>
