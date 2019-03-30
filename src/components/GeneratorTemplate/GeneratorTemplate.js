@@ -122,7 +122,7 @@ export default class GeneratorTemplate extends Component {
 				{this.state.alertSuccess ? <AlertSuccess /> : null}
 				{this.state.alertError ? <AlertError /> : null}
 
-				<h1>Title generator</h1>
+				<h1>{this.props.generatorType} generator</h1>
 				<hr />
 
 				<div className="language-mode">
