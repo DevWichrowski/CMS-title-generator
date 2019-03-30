@@ -17,7 +17,6 @@ class NoindexGenerator extends Component {
 			showResultModal: false,
 			languageMode: 'PHP',
 			textareaResult: null,
-			javascriptVisibility: false,
 			generateTypes: 'Noindex',
 			nofollow: true
 		};
@@ -29,7 +28,6 @@ class NoindexGenerator extends Component {
 
 	saveUrls = (event) => {
 		this.setState({ urlsArray: this.parseStringToArray(event.target.value) });
-		console.log('urlarray:', this.state.urlsArray);
 	};
 
 	handleShowModal = () => {
@@ -96,21 +94,6 @@ class NoindexGenerator extends Component {
 		return result;
 	};
 
-	generateCodeJS = (urls) => {
-		let result = '';
-
-		urls.map((url, index) => {
-			result += `<script> \n`;
-			result += `if(window.location.href === '${urls}'){\n`;
-			result += `document.title = '${url}';\n`;
-			result += `}\n`;
-			result += `</script>\n`;
-			this.setState({ textareaResult: result });
-			return true;
-		});
-		return result;
-	};
-
 	submitGenerate = () => {
 		if (this.state.urlsArray.length > 0) {
 			if (this.state.languageMode === 'PHP') {
@@ -119,15 +102,9 @@ class NoindexGenerator extends Component {
 				});
 				this.handleAlertSuccess();
 				this.handleShowModal();
-			} else if (this.state.languageMode === 'SMARTY') {
-				this.setState({
-					generatedCode: this.generateCodeSMARTY(this.state.urlsArray)
-				});
-				this.handleAlertSuccess();
-				this.handleShowModal();
 			} else {
 				this.setState({
-					generatedCode: this.generateCodeJS(this.state.urlsArray)
+					generatedCode: this.generateCodeSMARTY(this.state.urlsArray)
 				});
 				this.handleAlertSuccess();
 				this.handleShowModal();
@@ -149,7 +126,7 @@ class NoindexGenerator extends Component {
 					const blob = new Blob([ ...this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
 					FileSaver.saveAs(blob, 'PHP_titles.php');
 				}, 1000);
-			} else if (this.state.languageMode === 'SMARTY') {
+			} else {
 				this.setState({
 					generatedCode: this.generateCodeSMARTY(this.state.urlsArray)
 				});
@@ -158,16 +135,6 @@ class NoindexGenerator extends Component {
 					const FileSaver = require('file-saver');
 					const blob = new Blob([ ...this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
 					FileSaver.saveAs(blob, 'Smarty_titles.php');
-				}, 1000);
-			} else {
-				this.setState({
-					generatedCode: this.generateCodeJS(this.state.urlsArray)
-				});
-				setTimeout(() => {
-					this.handleAlertSuccess();
-					const FileSaver = require('file-saver');
-					const blob = new Blob([ ...this.state.generatedCode ], { type: 'text/plain;charset=utf-8' });
-					FileSaver.saveAs(blob, 'Javascript_titles.js');
 				}, 1000);
 			}
 		} else {
