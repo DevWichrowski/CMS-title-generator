@@ -12,7 +12,7 @@ class App extends Component {
 			<BrowserRouter>
 				<div className="App">
 					<Menu />
-					<Route exact path="/title-generator" component={TitleGenerator} />
+					<Route exact path="/" component={TitleGenerator} />
 					<Route exact path="/description-generator" component={DescriptionGenerator} />
 					<Route exact path="/noindex-generator" component={NoindexGenerator} />
 				</div>

@@ -34,9 +34,9 @@ export default function AuthorBox(props) {
 					<Button variant="secondary" onClick={props.handleClose}>
 						Close
 					</Button>
-					<Button variant="success" onClick={props.handleClose} disabled>
+					{/* <Button variant="success" onClick={props.handleClose} disabled>
 						Tip for beer <FaBeer />
-					</Button>
+					</Button> */}
 				</Modal.Footer>
 			</Modal>
 		</div>

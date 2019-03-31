@@ -1,6 +1,6 @@
 .generator-template {
     width: 100%;
-
+    
     .custom-textarea {
         display: block;
         width: 100%;
@@ -56,4 +56,10 @@
         width: 80%;
         background-color: rgba(255, 0, 0, 0.63);
     }
+}
+
+.question-mark{
+    position: absolute;
+    right: 335px;
+    cursor: pointer;
 }

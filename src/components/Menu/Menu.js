@@ -33,7 +33,7 @@ class Menu extends Component {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="mr-auto">
-							<NavLink to="/title-generator" className="nav-link">
+							<NavLink to="/" className="nav-link">
 								Title generator
 							</NavLink>
 							<NavLink to="/description-generator" className="nav-link">

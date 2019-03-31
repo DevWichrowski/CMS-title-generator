@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './GeneratorTemplate.scss';
-import { Button, ToggleButton, ToggleButtonGroup, ButtonToolbar } from 'react-bootstrap';
+import { Button, ToggleButton, ToggleButtonGroup, ButtonToolbar, Popover, OverlayTrigger } from 'react-bootstrap';
 import AlertSuccess from './AlertSuccess/AlertSuccess';
 import AlertError from './AlertError/AlertError';
 import ResultModal from './ResultModal/ResultModal';
+import { FaQuestionCircle } from 'react-icons/fa';
 
 export default class GeneratorTemplate extends Component {
 	constructor(props) {
@@ -116,6 +117,12 @@ export default class GeneratorTemplate extends Component {
 		}
 	};
 
+	popover = (
+		<Popover id="popover-basic" title="How it's working?">
+		  {this.props.message}
+		</Popover>
+	  );
+
 	render() {
 		return (
 			<div className="generator-template">
@@ -124,7 +131,6 @@ export default class GeneratorTemplate extends Component {
 
 				<h1>{this.props.generatorType} generator</h1>
 				<hr />
-
 				<div className="language-mode">
 					<p>You code will be generated in: {this.state.languageMode}</p>
 					<ButtonToolbar>
@@ -147,7 +153,9 @@ export default class GeneratorTemplate extends Component {
 						</ToggleButtonGroup>
 					</ButtonToolbar>
 				</div>
-
+				<OverlayTrigger trigger="click" placement="left" overlay={this.popover}>
+				<FaQuestionCircle className="question-mark"/>
+				</OverlayTrigger>
 				<div className="titles-textarea">
 					<p>Enter all {this.props.generatorTypes} below</p>
 					<textarea className="custom-textarea" onChange={this.saveTitle} />

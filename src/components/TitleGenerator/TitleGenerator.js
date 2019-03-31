@@ -56,6 +56,8 @@ class TitleGenerator extends Component {
 		return result;
 	};
 
+	message = "Choose in which language code should be generated, you can choose PHP, SMARTY and JavaScript, next enter titles and urls in text areas all of those should by separated by ENTER, now you can generate code or save it to file.";
+
 	render() {
 		return (
 			<div className="title-generator">
@@ -67,6 +69,7 @@ class TitleGenerator extends Component {
 					textareaResult={this.state.textareaResult}
 					generatorType={'Title'}
 					generatorTypes={'titles'}
+					message={this.message}
 				/>
 			</div>
 		);
