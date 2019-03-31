@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Menu.scss';
 import { connect } from 'react-redux';
 import { getLoginStatus } from '../../store/selectors/users.selectors';
 import { Navbar, Nav } from 'react-bootstrap';
@@ -11,7 +12,7 @@ class Menu extends Component {
 	}
 	render() {
 		return (
-			<div>
+			<div className="menu-main">
 				<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 					<NavLink to="/">
 						<Navbar.Brand>CMS Title generator</Navbar.Brand>
@@ -27,6 +28,9 @@ class Menu extends Component {
 							</NavLink>
 							<NavLink to="/noindex-generator" className="nav-link">
 								Noindex generator
+							</NavLink>
+							<NavLink to="/noindex-generator" className="nav-link author">
+								Author
 							</NavLink>
 						</Nav>
 					</Navbar.Collapse>

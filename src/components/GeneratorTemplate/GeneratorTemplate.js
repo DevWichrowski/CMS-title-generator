@@ -36,9 +36,10 @@ export default class GeneratorTemplate extends Component {
 	handleShowModal = () => {
 		this.setState({ showResultModal: !this.state.showResultModal });
 
-		if (this.state.showResultModal === false) {
-			this.setState({ titlesArray: [], urlsArray: [] });
-		}
+		// That will clear arrays every Result modal is closed
+		// if (this.state.showResultModal === false) {
+		// 	this.setState({ titlesArray: [], urlsArray: [] });
+		// }
 	};
 
 	handleAlertSuccess = () => {
