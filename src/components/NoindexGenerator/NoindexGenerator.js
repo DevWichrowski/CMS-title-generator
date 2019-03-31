@@ -3,6 +3,7 @@ import { Button, ToggleButton, ToggleButtonGroup, ButtonToolbar } from 'react-bo
 import AlertSuccess from '../GeneratorTemplate/AlertSuccess/AlertSuccess';
 import AlertError from '../GeneratorTemplate/AlertError/AlertError';
 import ResultModal from '../GeneratorTemplate/ResultModal/ResultModal';
+import './NoindexGenerator.scss';
 
 class NoindexGenerator extends Component {
 	constructor(props) {
@@ -185,7 +186,7 @@ class NoindexGenerator extends Component {
 				</div>
 				<div className="ulrs-textarea">
 					<p>Enter all urls below</p>
-					<textarea className="custom-textarea" onChange={this.saveUrls} />
+					<textarea className="urls-container" onChange={this.saveUrls} />
 				</div>
 				<ResultModal
 					handleModal={this.handleShowModal}
