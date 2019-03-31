@@ -11,15 +11,15 @@ export default class GeneratorTemplate extends Component {
 		super(props);
 
 		this.state = {
-            titlesArray: [],
+			titlesArray: [],
 			urlsArray: [],
 			separator: '\n',
 			generatedCode: '',
 			alertSuccess: false,
-            alertError: false,
-            showResultModal: false,
-			languageMode: 'PHP',
-        };
+			alertError: false,
+			showResultModal: false,
+			languageMode: 'PHP'
+		};
 	}
 
 	parseStringToArray = (urlString) => {
@@ -60,7 +60,9 @@ export default class GeneratorTemplate extends Component {
 	submitGenerate = () => {
 		if (this.state.titlesArray.length > 0 && this.state.urlsArray.length > 0) {
 			if (this.state.languageMode === 'PHP') {
-				this.setState({ generatedCode: this.props.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
+				this.setState({
+					generatedCode: this.props.generateCodePHP(this.state.titlesArray, this.state.urlsArray)
+				});
 				this.handleAlertSuccess();
 				this.handleShowModal();
 			} else if (this.state.languageMode === 'SMARTY') {
@@ -84,7 +86,9 @@ export default class GeneratorTemplate extends Component {
 	saveResultToFile = () => {
 		if (this.state.titlesArray.length > 0 && this.state.urlsArray.length > 0) {
 			if (this.state.languageMode === 'PHP') {
-				this.setState({ generatedCode: this.props.generateCodePHP(this.state.titlesArray, this.state.urlsArray) });
+				this.setState({
+					generatedCode: this.props.generateCodePHP(this.state.titlesArray, this.state.urlsArray)
+				});
 				setTimeout(() => {
 					this.handleAlertSuccess();
 					const FileSaver = require('file-saver');
@@ -119,9 +123,9 @@ export default class GeneratorTemplate extends Component {
 
 	popover = (
 		<Popover id="popover-basic" title="How it's working?">
-		  {this.props.message}
+			{this.props.message}
 		</Popover>
-	  );
+	);
 
 	render() {
 		return (
@@ -154,7 +158,7 @@ export default class GeneratorTemplate extends Component {
 					</ButtonToolbar>
 				</div>
 				<OverlayTrigger trigger="click" placement="left" overlay={this.popover}>
-				<FaQuestionCircle className="question-mark"/>
+					<FaQuestionCircle className="question-mark" />
 				</OverlayTrigger>
 				<div className="titles-textarea">
 					<p>Enter all {this.props.generatorTypes} below</p>

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Button, ToggleButton, ToggleButtonGroup, ButtonToolbar } from 'react-bootstrap';
+import { Button, ToggleButton, ToggleButtonGroup, ButtonToolbar, Popover, OverlayTrigger } from 'react-bootstrap';
 import AlertSuccess from '../GeneratorTemplate/AlertSuccess/AlertSuccess';
 import AlertError from '../GeneratorTemplate/AlertError/AlertError';
 import ResultModal from '../GeneratorTemplate/ResultModal/ResultModal';
 import './NoindexGenerator.scss';
+import { FaQuestionCircle } from 'react-icons/fa';
 
 class NoindexGenerator extends Component {
 	constructor(props) {
@@ -143,6 +144,14 @@ class NoindexGenerator extends Component {
 		}
 	};
 
+	message = 'First of all choose in which language code should be generated, next choose follow or nofollow option, after all fill the text area with urls, you can generate code or save it to file.';
+
+	popover = (
+		<Popover id="popover-basic" title="How it's working?">
+			{this.message}
+		</Popover>
+	);
+
 	render() {
 		return (
 			<div className="generator-template">
@@ -160,18 +169,12 @@ class NoindexGenerator extends Component {
 							<ToggleButton value={2} variant="danger" onClick={() => this.handleLanduageMode('SMARTY')}>
 								SMARTY
 							</ToggleButton>
-							{this.state.javascriptVisibility ? (
-								<ToggleButton
-									value={3}
-									variant="danger"
-									onClick={() => this.handleLanduageMode('Javascript')}
-									disabled
-								>
-									Javascript
-								</ToggleButton>
-							) : null}
 						</ToggleButtonGroup>
 					</ButtonToolbar>
+
+					<OverlayTrigger trigger="click" placement="left" overlay={this.popover}>
+						<FaQuestionCircle className="question-mark" />
+					</OverlayTrigger>
 
 					<ButtonToolbar>
 						<ToggleButtonGroup type="radio" name="options" defaultValue={1}>
