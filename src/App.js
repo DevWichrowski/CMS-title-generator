@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Menu from './components/Menu/Menu';
+import TitleGenerator from './components/TitleGenerator/TitleGenerator';
+import DescriptionGenerator from './components/DescriptionGenerator/DescriptionGenerator';
+import NoindexGenerator from './components/NoindexGenerator/NoindexGenerator';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<BrowserRouter>
+				<div className="App">
+					<Menu />
+					<Route exact path="/" component={TitleGenerator} />
+					<Route exact path="/description-generator" component={DescriptionGenerator} />
+					<Route exact path="/noindex-generator" component={NoindexGenerator} />
+				</div>
+			</BrowserRouter>
+		);
+	}
 }
 
 export default App;
