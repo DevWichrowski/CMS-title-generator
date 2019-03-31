@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Menu from './components/Menu/Menu';
 import TitleGenerator from './components/TitleGenerator/TitleGenerator';
 import DescriptionGenerator from './components/DescriptionGenerator/DescriptionGenerator';
-import NoindexGenerator from './components/NoindexGenerator/NoindexGenerator';
+import NoindexGenerator from './components/NoindexGenerator/NoindexGenerator'
 
 class App extends Component {
 	render() {

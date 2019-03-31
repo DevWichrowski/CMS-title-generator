@@ -4,12 +4,25 @@ import { connect } from 'react-redux';
 import { getLoginStatus } from '../../store/selectors/users.selectors';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import NoindexGenerator from '../NoindexGenerator/NoindexGenerator';
+import AuthorBox from './AuthorBox/AuthorBox';
 
 class Menu extends Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			authorBoxVisible: false
+		};
 	}
+
+	closeAuthorbox = () => {
+		this.setState({ authorBoxVisible: false });
+	};
+
+	openAuthorbox = () => {
+		this.setState({ authorBoxVisible: true });
+	};
+
 	render() {
 		return (
 			<div className="menu-main">
@@ -29,11 +42,12 @@ class Menu extends Component {
 							<NavLink to="/noindex-generator" className="nav-link">
 								Noindex generator
 							</NavLink>
-							<NavLink to="/noindex-generator" className="nav-link author">
+							<NavLink to="/noindex-generator" className="nav-link author" onClick={this.openAuthorbox}>
 								Author
 							</NavLink>
 						</Nav>
 					</Navbar.Collapse>
+					<AuthorBox authorboxVisibility={this.state.authorBoxVisible} handleClose={this.closeAuthorbox} />
 				</Navbar>
 			</div>
 		);
