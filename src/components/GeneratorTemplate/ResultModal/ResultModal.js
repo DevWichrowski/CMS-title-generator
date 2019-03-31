@@ -7,8 +7,8 @@ class ResultModal extends Component {
 		super(props);
 
 		this.state = {
-			copySuccess: '',
-		}
+			copySuccess: ''
+		};
 	}
 
 	copyToClipboard = (e) => {
@@ -29,13 +29,19 @@ class ResultModal extends Component {
 						<Modal.Title>Generated results</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						<textarea value={this.props.resultValue} readOnly ref={(textarea) => (this.textArea = textarea)}/>
+						<textarea
+							value={this.props.resultValue}
+							readOnly
+							ref={(textarea) => (this.textArea = textarea)}
+						/>
 					</Modal.Body>
 					<Modal.Footer>
 						<Button variant="secondary" onClick={this.props.handleModal}>
 							Close
 						</Button>
-						<Button variant="danger" onClick={this.copyToClipboard}>Copy to clipboard</Button>
+						<Button variant="danger" onClick={this.copyToClipboard}>
+							Copy to clipboard
+						</Button>
 					</Modal.Footer>
 				</Modal>
 			</div>

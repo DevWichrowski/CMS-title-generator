@@ -22,26 +22,13 @@ export default class GeneratorTemplate extends Component {
 		};
 	}
 
-	parseStringToArray = (urlString) => {
-		return urlString.split(this.state.separator);
-	};
+	parseStringToArray = (urlString) => urlString.split(this.state.separator);
 
-	saveTitle = (event) => {
-		this.setState({ titlesArray: this.parseStringToArray(event.target.value) });
-	};
+	saveTitle = (event) => this.setState({ titlesArray: this.parseStringToArray(event.target.value) });
 
-	saveUrls = (event) => {
-		this.setState({ urlsArray: this.parseStringToArray(event.target.value) });
-	};
+	saveUrls = (event) => this.setState({ urlsArray: this.parseStringToArray(event.target.value) });
 
-	handleShowModal = () => {
-		this.setState({ showResultModal: !this.state.showResultModal });
-
-		// That will clear arrays every Result modal is closed
-		// if (this.state.showResultModal === false) {
-		// 	this.setState({ titlesArray: [], urlsArray: [] });
-		// }
-	};
+	handleShowModal = () => this.setState({ showResultModal: !this.state.showResultModal });
 
 	handleAlertSuccess = () => {
 		this.setState({ alertSuccess: true });
@@ -53,9 +40,7 @@ export default class GeneratorTemplate extends Component {
 		setTimeout(() => this.setState({ alertError: false }), 3000);
 	};
 
-	handleLanduageMode = (language) => {
-		this.setState({ languageMode: language });
-	};
+	handleLanduageMode = (language) => this.setState({ languageMode: language });
 
 	submitGenerate = () => {
 		if (this.state.titlesArray.length > 0 && this.state.urlsArray.length > 0) {

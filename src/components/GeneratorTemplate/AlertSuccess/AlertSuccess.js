@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert } from 'react-bootstrap';
-import './AlertSuccess.scss'
+import './AlertSuccess.scss';
 
 export default function AlertSuccess() {
 	return (

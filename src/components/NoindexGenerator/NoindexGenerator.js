@@ -24,13 +24,9 @@ class NoindexGenerator extends Component {
 		};
 	}
 
-	parseStringToArray = (urlString) => {
-		return urlString.split(this.state.separator);
-	};
+	parseStringToArray = (urlString) => urlString.split(this.state.separator);
 
-	saveUrls = (event) => {
-		this.setState({ urlsArray: this.parseStringToArray(event.target.value) });
-	};
+	saveUrls = (event) => this.setState({ urlsArray: this.parseStringToArray(event.target.value) });
 
 	handleShowModal = () => {
 		this.setState({ showResultModal: !this.state.showResultModal });
@@ -50,17 +46,11 @@ class NoindexGenerator extends Component {
 		setTimeout(() => this.setState({ alertError: false }), 3000);
 	};
 
-	handleLanduageMode = (language) => {
-		this.setState({ languageMode: language });
-	};
+	handleLanduageMode = (language) => this.setState({ languageMode: language });
 
-	switchToNofollow = () => {
-		this.setState({ nofollow: true });
-	};
+	switchToNofollow = () => this.setState({ nofollow: true });
 
-	switchToFollow = () => {
-		this.setState({ nofollow: false });
-	};
+	switchToFollow = () => this.setState({ nofollow: false });
 
 	generateCodePHP = (urls) => {
 		let result = '';

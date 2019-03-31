@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './Menu.scss';
-import { connect } from 'react-redux';
-import { getLoginStatus } from '../../store/selectors/users.selectors';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import AuthorBox from './AuthorBox/AuthorBox';
@@ -15,13 +13,9 @@ class Menu extends Component {
 		};
 	}
 
-	closeAuthorbox = () => {
-		this.setState({ authorBoxVisible: false });
-	};
+	closeAuthorbox = () => this.setState({ authorBoxVisible: false });
 
-	openAuthorbox = () => {
-		this.setState({ authorBoxVisible: true });
-	};
+	openAuthorbox = () => this.setState({ authorBoxVisible: true });
 
 	render() {
 		return (
@@ -54,8 +48,4 @@ class Menu extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	loggedIn: getLoginStatus(state)
-});
-
-export default connect(mapStateToProps, null)(Menu);
+export default Menu;

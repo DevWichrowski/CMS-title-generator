@@ -17,7 +17,7 @@ export default function ButtonGenerate(props) {
 				</a>
 			</p>
 			<div className="collapse" id="collapseExample">
-				<textarea className="custom-textarea" value={props.textareaResult}/>
+				<textarea className="custom-textarea" value={props.textareaResult} />
 			</div>
 		</div>
 	);
