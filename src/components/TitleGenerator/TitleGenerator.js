@@ -15,9 +15,17 @@ class TitleGenerator extends Component {
 		let result = '';
 
 		titles.map((title, index) => {
+			let newUrlsArr = [];
+
+			urls.map((url) => {
+				url = url.replace('http://', '');
+				url = url.replace('https://', '');
+				newUrlsArr.push(url);
+			});
+
 			result += `<?php\n`;
-			result += `	if($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "${urls[index]}") {\n`;
-			result += `	   echo '<title>${title}</title>'\n`;
+			result += `	if($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "${newUrlsArr[index]}") {\n`;
+			result += `	   echo '<title>${title}</title>';\n`;
 			result += `	  }\n`;
 			result += `?>\n`;
 			result += `\n`;

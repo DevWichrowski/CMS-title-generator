@@ -13,11 +13,18 @@ class DescriptionGenerator extends Component {
 
 	generateCodePHP = (titles, urls) => {
 		let result = '';
+		let newUrlsArr = [];
+
+		urls.map((url) => {
+			url = url.replace('http://', '');
+			url = url.replace('https://', '');
+			newUrlsArr.push(url);
+		});
 
 		titles.map((title, index) => {
 			result += `<?php\n`;
-			result += `	if($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "${urls[index]}") {\n`;
-			result += `	   echo '<meta name="description" content="${title}">'\n`;
+			result += `	if($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "${newUrlsArr[index]}") {\n`;
+			result += `	   echo '<meta name="description" content="${title}">';\n`;
 			result += `	  }\n`;
 			result += `?>\n`;
 			result += `\n`;
