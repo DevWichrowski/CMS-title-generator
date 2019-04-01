@@ -15,9 +15,17 @@ class TitleGenerator extends Component {
 		let result = '';
 
 		titles.map((title, index) => {
+			let newUrlsArr = [];
+
+			urls.map((url) => {
+				url = url.replace('http://', '');
+				url = url.replace('https://', '');
+				newUrlsArr.push(url);
+			});
+
 			result += `<?php\n`;
-			result += `	if("${urls[index]}" == {$_SERVER['HTTP_HOST']} . {$_SERVER['REQUEST_URI']}){\n`;
-			result += `	   echo '<title>${title}</title>'\n`;
+			result += `	if($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "${newUrlsArr[index]}") {\n`;
+			result += `	   echo '<title>${title}</title>';\n`;
 			result += `	  }\n`;
 			result += `?>\n`;
 			result += `\n`;
@@ -45,11 +53,9 @@ class TitleGenerator extends Component {
 		let result = '';
 
 		titles.map((title, index) => {
-			result += `<script> \n`;
 			result += `if(window.location.href === '${urls}'){\n`;
 			result += `document.title = '${title}';\n`;
 			result += `}\n`;
-			result += `</script>\n`;
 			this.setState({ textareaResult: result });
 			return true;
 		});

@@ -13,11 +13,18 @@ class DescriptionGenerator extends Component {
 
 	generateCodePHP = (titles, urls) => {
 		let result = '';
+		let newUrlsArr = [];
+
+		urls.map((url) => {
+			url = url.replace('http://', '');
+			url = url.replace('https://', '');
+			newUrlsArr.push(url);
+		});
 
 		titles.map((title, index) => {
 			result += `<?php\n`;
-			result += `	if("${urls[index]}" == {$_SERVER['HTTP_HOST']} . {$_SERVER['REQUEST_URI']}){\n`;
-			result += `	   echo '<meta name="description" content="${title}">'\n`;
+			result += `	if($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "${newUrlsArr[index]}") {\n`;
+			result += `	   echo '<meta name="description" content="${title}">';\n`;
 			result += `	  }\n`;
 			result += `?>\n`;
 			result += `\n`;
@@ -45,11 +52,9 @@ class DescriptionGenerator extends Component {
 		let result = '';
 
 		titles.map((title, index) => {
-			result += `<script> \n`;
 			result += `if(window.location.href === '${urls}'){\n`;
 			result += `document.querySelector('meta[name="description"]').setAttribute("content", '${title}');\n`;
 			result += `}\n`;
-			result += `</script>\n`;
 			this.setState({ textareaResult: result });
 			return true;
 		});
