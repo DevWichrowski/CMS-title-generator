@@ -36,7 +36,7 @@ class Menu extends Component {
 							<NavLink to="/noindex-generator" className="nav-link">
 								Noindex generator
 							</NavLink>
-							<NavLink to="/noindex-generator" className="nav-link author" onClick={this.openAuthorbox}>
+							<NavLink to="/" className="nav-link author" onClick={this.openAuthorbox}>
 								Author
 							</NavLink>
 						</Nav>
