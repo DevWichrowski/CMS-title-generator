@@ -57,7 +57,7 @@ class NoindexGenerator extends Component {
 
 		urls.map((url, index) => {
 			result += `<?php\n`;
-			result += `	if("${urls[index]}" == {$_SERVER['HTTP_HOST']} . {$_SERVER['REQUEST_URI']}){\n`;
+			result += `	if($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] == "${urls[index]}") {\n`;
 			result += `	   echo '<meta name="robots" content="noindex, ${this.state.nofollow
 				? 'nofollow'
 				: 'follow'}" />'\n`;
